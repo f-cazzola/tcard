@@ -1,7 +1,4 @@
 import 'dart:math';
-
-import 'package:flutter/material.dart';
-
 import 'cards.dart';
 import 'swipe_info.dart';
 
@@ -33,8 +30,7 @@ class TCardController {
 
   get append => state!.append;
 
-  void changeCards({required List<Widget> cards}) =>
-      state!.changeCards(cards: cards);
+  get changeCards => state!.changeCards;
 
   void dispose() {
     state = null;
