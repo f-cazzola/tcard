@@ -350,6 +350,11 @@ class TCardState extends State<TCard> with TickerProviderStateMixin {
     _resetFrontCard();
   }
 
+  void changeCards({required List<Widget> cards}) {
+    _cards.clear();
+    _cards.addAll(cards);
+  }
+
   // 添加卡片
   void append(List<Widget> cards) {
     _cards.addAll(cards);
