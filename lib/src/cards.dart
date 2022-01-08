@@ -94,27 +94,30 @@ class TCardState extends State<TCard> with TickerProviderStateMixin {
 
     Widget rotate = Transform.rotate(
       angle: (math.pi / 180.0) * _frontCardRotation,
-      child: Stack(
-        children: [
-          SizedBox.fromSize(size: CardSizes.front(constraints), child: child),
-          Padding(
-            padding: EdgeInsets.all(15),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Opacity(
-                  opacity: _frontCardRotation > 0 ? _opacity : 0,
-                  child: widget.leftIcon,
-                ),
-                // Spacer(),
-                Opacity(
-                  opacity: _frontCardRotation < 0 ? _opacity : 0,
-                  child: widget.rightIcon,
-                ),
-              ],
+      child: SizedBox.fromSize(
+        size: CardSizes.front(constraints),
+        child: Stack(
+          children: [
+            SizedBox.fromSize(size: CardSizes.front(constraints), child: child),
+            Padding(
+              padding: EdgeInsets.all(15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Opacity(
+                    opacity: _frontCardRotation > 0 ? _opacity : 0,
+                    child: widget.leftIcon,
+                  ),
+                  // Spacer(),
+                  Opacity(
+                    opacity: _frontCardRotation < 0 ? _opacity : 0,
+                    child: widget.rightIcon,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
 
