@@ -264,7 +264,7 @@ class TCardState extends State<TCard> with TickerProviderStateMixin {
   }
 
   // 运行卡片向前动画
-  void runChangeOrderAnimation({Function? onFinishAnimation}) {
+  Future<void> runChangeOrderAnimation() async {
     if (_isAnimating()) {
       _swipeInfoList.removeLast();
       return;
@@ -275,11 +275,11 @@ class TCardState extends State<TCard> with TickerProviderStateMixin {
     }
 
     _cardChangeController.reset();
-    _cardChangeController.forward().then((value) => onFinishAnimation);
+    await _cardChangeController.forward();
   }
 
   // 运行卡片后退动画
-  void runReverseOrderAnimation({Function? onFinishAnimation}) {
+  Future<void> runReverseOrderAnimation() async {
     if (_isAnimating()) {
       return;
     }
@@ -290,7 +290,7 @@ class TCardState extends State<TCard> with TickerProviderStateMixin {
     }
 
     _cardReverseController.reset();
-    _cardReverseController.forward().then((value) => onFinishAnimation);
+    await _cardReverseController.forward();
   }
 
   // 向前动画完成后执行

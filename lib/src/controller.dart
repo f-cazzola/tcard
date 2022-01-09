@@ -14,18 +14,19 @@ class TCardController {
 
   int get index => state?.frontCardIndex ?? 0;
 
-  forward({SwipeDirection? direction, Function? onFinishAnimation}) {
+  Future<void> forward(
+      {SwipeDirection? direction, Function? onFinishAnimation}) async {
     if (direction == null) {
       direction =
           Random().nextBool() ? SwipeDirection.Left : SwipeDirection.Right;
     }
 
     state!.swipeInfoList.add(SwipeInfo(state!.frontCardIndex, direction));
-    state!.runChangeOrderAnimation(onFinishAnimation: onFinishAnimation);
+    await state!.runChangeOrderAnimation();
   }
 
-  back({Function? onFinishAnimation}) {
-    state!.runReverseOrderAnimation(onFinishAnimation);
+  Future<void> back() async {
+    await state!.runReverseOrderAnimation();
   }
 
   void reset({List<Widget>? cards}) => state!.reset(cards: cards);
