@@ -12,18 +12,18 @@ class TCardController {
 
   int get index => state?.frontCardIndex ?? 0;
 
-  forward({SwipeDirection? direction}) {
+  forward({SwipeDirection? direction, Function? onFinishAnimation}) {
     if (direction == null) {
       direction =
           Random().nextBool() ? SwipeDirection.Left : SwipeDirection.Right;
     }
 
     state!.swipeInfoList.add(SwipeInfo(state!.frontCardIndex, direction));
-    state!.runChangeOrderAnimation();
+    state!.runChangeOrderAnimation(onFinishAnimation: onFinishAnimation);
   }
 
-  back() {
-    state!.runReverseOrderAnimation();
+  back({Function? onFinishAnimation}) {
+    state!.runReverseOrderAnimation(onFinishAnimation);
   }
 
   get reset => state!.reset;
