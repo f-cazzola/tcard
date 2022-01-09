@@ -1,4 +1,6 @@
 import 'dart:math';
+import 'package:flutter/material.dart';
+
 import 'cards.dart';
 import 'swipe_info.dart';
 
@@ -26,11 +28,12 @@ class TCardController {
     state!.runReverseOrderAnimation(onFinishAnimation);
   }
 
-  get reset => state!.reset;
+  void reset({List<Widget>? cards}) => state!.reset(cards: cards);
 
-  get append => state!.append;
+  void append({required List<Widget> cards}) => state!.append(cards);
 
-  get changeCards => state!.changeCards;
+  void changeCards({required List<Widget> cards}) =>
+      state!.changeCards(cards: cards);
 
   void dispose() {
     state = null;
