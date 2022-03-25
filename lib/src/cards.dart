@@ -18,7 +18,7 @@ class TCard extends StatefulWidget {
   /// 卡片列表
   final List<Widget> cards;
 
-  final List<SwipeInfo>? swipeInfoList;
+  final List<SwipeInfo> swipeInfoList;
 
   final int? frontCardIndex;
 
@@ -48,7 +48,7 @@ class TCard extends StatefulWidget {
 
   const TCard({
     required this.cards,
-    this.swipeInfoList,
+    this.swipeInfoList = const [],
     this.frontCardIndex,
     this.leftIcon,
     this.rightIcon,
@@ -413,7 +413,7 @@ class TCardState extends State<TCard> with TickerProviderStateMixin {
     // 初始化所有传入的卡片
     _cards.addAll(widget.cards);
 
-    _swipeInfoList.addAll(swipeInfoList);
+    _swipeInfoList.addAll(widget.swipeInfoList);
 
     _frontCardIndex = widget.frontCardIndex ?? 0;
 
